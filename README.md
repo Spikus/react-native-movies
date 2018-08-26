@@ -8,7 +8,7 @@ As it created by Create React Native App down you will find all about install an
 
 ### Explanation of architecture
 
-App base on non standart for Redux architecture. There are 3 code directories `components` `model` `navigatiom` and only two react native plugins `react-navigation` and `react-native-svg`.
+App base on non standart for Redux architecture. There are 3 code directories `components` `model` `navigation` and only two react native plugins `react-navigation` and `react-native-svg`.
 
 #### Navigation
 Navigation based on [react-navigation](react-navigation) and have 3 screens:
@@ -37,6 +37,7 @@ Some point that already include to arch. but not supports:
 - Hande of redrawing ( life - circle) for comments-list component
 - Const for color and styles
 - Use not FIREBASE 
+- Typos 
 - Some Design
 
 ## =================== Standart Reac Native Info =================== 
