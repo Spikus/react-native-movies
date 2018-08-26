@@ -41,7 +41,7 @@ class ListState extends React.Component {
         if (!AppData.userName) {
             this.state.userModal._toggleModal(true)
         } else {
-            console.log(AppData.userName)
+            //console.log(AppData.userName)
         }
     }
 }

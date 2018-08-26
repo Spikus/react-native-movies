@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
         flexWrap: 'nowrap',
         alignItems: 'center',
         borderBottomWidth: 1,
-        borderBottomColor: '#b0b0b0'
+        borderBottomColor: '#ebebeb',
+        backgroundColor: '#FFF'
     },
     textInfo: {
         paddingRight: 15,
@@ -36,7 +37,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'nowrap',
         alignItems: 'center',
-        paddingRight: 10
+        paddingRight: 10,
+        minWidth: 80
     },
     addItemText: {
         fontFamily: cuteFont,

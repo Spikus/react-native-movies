@@ -1,38 +1,50 @@
+# MoviesApp test App
+
+This is test app for [turlte](https://tender-mclean-00a2bd.netlify.com/mobile/)
+
+### How to run the code
+
+As it created by Create React Native App down you will find all about install and run the code
+
+### Explanation of architecture
+
+App base on non standart for Redux architecture. There are 3 code directories `components` `model` `navigatiom` and only two react native plugins `react-navigation` and `react-native-svg`.
+
+#### Navigation
+Navigation based on [react-navigation](react-navigation) and have 3 screens:
+ - *preload*: just loading screen on waiting data
+ - *list*: list of moview each can be commented
+ - *comment*: list for comment to movie
+
+Also there simple router in directory jsut to hadle navigation between screens 
+
+#### Model
+
+Global data object:
+ - Username
+ - Movies Local Data
+ - Methods to fetch data from [firebase](https://moviesapp-ab452.firebaseio.com/comments.json) and [JSON](https://tender-mclean-00a2bd.netlify.com/mobile/movies.json) 
+ - Method to send comments 
+
+#### Components
+
+React native components for app
+
+### If you had more time, what would you like to improve?
+
+Some point that already include to arch. but not supports:
+- Re-send comments failed 
+- Hande of redrawing ( life - circle) for comments-list component
+- Const for color and styles
+- Use not FIREBASE 
+- Some Design
+
+## =================== Standart Reac Native Info =================== 
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
 
-## Table of Contents
-
-* [Updating to New Releases](#updating-to-new-releases)
-* [Available Scripts](#available-scripts)
-  * [npm start](#npm-start)
-  * [npm test](#npm-test)
-  * [npm run ios](#npm-run-ios)
-  * [npm run android](#npm-run-android)
-  * [npm run eject](#npm-run-eject)
-* [Writing and Running Tests](#writing-and-running-tests)
-* [Environment Variables](#environment-variables)
-  * [Configuring Packager IP Address](#configuring-packager-ip-address)
-* [Customizing App Display Name and Icon](#customizing-app-display-name-and-icon)
-* [Sharing and Deployment](#sharing-and-deployment)
-  * [Publishing to Expo's React Native Community](#publishing-to-expos-react-native-community)
-  * [Building an Expo "standalone" app](#building-an-expo-standalone-app)
-  * [Ejecting from Create React Native App](#ejecting-from-create-react-native-app)
-    * [Build Dependencies (Xcode & Android Studio)](#build-dependencies-xcode-android-studio)
-    * [Should I Use ExpoKit?](#should-i-use-expokit)
-* [Troubleshooting](#troubleshooting)
-  * [Networking](#networking)
-  * [iOS Simulator won't open](#ios-simulator-wont-open)
-  * [QR Code does not scan](#qr-code-does-not-scan)
-
-## Updating to New Releases
-
-You should only need to update the global installation of `create-react-native-app` very rarely, ideally never.
-
-Updating the `react-native-scripts` dependency of your app should be as simple as bumping the version number in `package.json` and reinstalling your project's dependencies.
-
-Upgrading to a new version of React Native requires updating the `react-native`, `react`, and `expo` package versions, and setting the correct `sdkVersion` in `app.json`. See the [versioning guide](https://github.com/react-community/create-react-native-app/blob/master/VERSIONS.md) for up-to-date information about package version compatibility.
 
 ## Available Scripts
 

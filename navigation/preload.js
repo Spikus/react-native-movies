@@ -46,7 +46,7 @@ class PreloaderScreen extends React.Component {
 
         return <View style={styles.body}>
             <Animated.View style={{ transform: [{ rotate: rotateStyle }] }}>
-                <LoadSvg size={100} />
+                <LoadSvg size={50} />
             </Animated.View>
 
         </View>

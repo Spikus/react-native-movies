@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Platform, TextInput , TouchableOpacity } from 'react-native';
-import { SendSvg } from 'MoviesApp/components/svg';
+import { StyleSheet, View, Platform, TextInput, TouchableOpacity } from 'react-native';
+import { SendSvg, DisableSvg } from 'MoviesApp/components/svg';
 
 const cuteFont = Platform.OS === 'ios' ? 'Helvetica' : 'Roboto';
 const styles = StyleSheet.create({
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF'
     },
     textInput: {
-        flex:1,
+        flex: 1,
         padding: 10,
         marginTop: 10,
         marginBottom: 10,
@@ -31,6 +31,9 @@ const styles = StyleSheet.create({
         height: 30,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    disabled: {
+        backgroundColor: '#9f9f9f'
     }
 });
 
@@ -44,7 +47,20 @@ class CommentPanel extends React.Component {
 
     _sendComment() {
         this.props.updateFun(this.state.myComment);
-        this.setState({ myComment: null });
+        this.setState({ myComment: '' });
+    }
+
+    _renderButon() {
+        if (this.state.myComment.length > 3) {
+            return <TouchableOpacity onPress={this._sendComment.bind(this)} style={styles.button}>
+                <SendSvg size={'15'} />
+            </TouchableOpacity>
+        } else {
+            return <View style={[styles.button,styles.disabled]}>
+                <DisableSvg size={'15'}  fill={'#FFFFFF'}  />
+            </View>
+        }
+
     }
 
     render() {
@@ -57,9 +73,7 @@ class CommentPanel extends React.Component {
                 multiline={true}
                 placeholderTextColor="#454545"
                 placeholder='Your Comment' />
-            <TouchableOpacity onPress={this._sendComment.bind(this)} style={styles.button}>
-                <SendSvg size={'20'} />
-            </TouchableOpacity>
+            {this._renderButon()}
         </View>
     }
 }

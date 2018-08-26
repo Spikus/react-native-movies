@@ -31,18 +31,32 @@ class CommentState extends React.Component {
     }
 
     _sendComment = async (text) => {
-        let arr = this.state.comments || [];
-
-        arr.push({
+        const newComment = {
             'name': AppData.userName,
-            'text': text
+            'text': text,
+            isSending: true
+        }
+
+        let arr = this.state.comments || [];
+ 
+        arr.push(newComment);
+      
+        this.setState({
+            comments: arr,
+            onSending: true
         });
 
-        this.setState({
-            comments: arr
-        });
-        let readyData = await AppData.sendComment(this.state.movieKey, arr);
-        console.log(readyData);
+        let readyData = await AppData.sendComment(this.state.movieKey, text);
+
+        if (readyData.ok) {
+            newComment.isSending = false;
+            arr[arr.length - 1] = newComment;
+           
+            this.setState({
+                comments: arr,
+                onSending: false
+            });
+        }
     }
 
     _getData = async () => {
@@ -56,11 +70,11 @@ class CommentState extends React.Component {
     render() {
         if (this.state.isLoading) {
             this._getData();
-            return <View  style={{ flex: 1 }}>
+            return <View style={{ flex: 1 }}>
                 <ActivityIndicator style={{ flex: 1, marginTop: 30 }} />
             </View>
         } else {
-            return <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+            return <KeyboardAvoidingView style={{ flex: 1 }} keyboardVerticalOffset={85} behavior="padding" enabled>
                 <CommentList comments={this.state.comments} />
                 <CommentPanel updateFun={this._sendComment.bind(this)} />
             </KeyboardAvoidingView>

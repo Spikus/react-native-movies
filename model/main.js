@@ -7,6 +7,7 @@ const AppData = {
     userName: null,
     movies: [],
     getUserName: async function () {
+       
         let response = await AsyncStorage.getItem('@MoviesApp:userName');
         this.userName = JSON.parse(response);
         return true;
@@ -27,12 +28,16 @@ const AppData = {
         let comment = await response.json();
         return comment;
     },
-    sendComment: async function (movieKey,commentsArray) {
-        
+    sendComment: async function (movieKey,commentsText) {
+        const latestComment = await AppData.getComments(movieKey) || [];
+        latestComment.push({
+            'name': AppData.userName,
+            'text': commentsText,
+        })
         const path = `https://moviesapp-ab452.firebaseio.com/comments/${movieKey}.json`;
         const init = {
             method: 'PUT',
-            body: JSON.stringify(commentsArray)
+            body: JSON.stringify(latestComment)
         }
         
         let response = await fetch(path,init);
